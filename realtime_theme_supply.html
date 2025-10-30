@@ -1,1 +1,104 @@
-<html><head><meta charset="utf-8" /><title>실시간 주도 테마 현황 (2025-10-30 08:57) - 장 마감</title><style>body { font-family: sans-serif, Arial, Helvetica; display: flex; align-items: center; justify-content: center; min-height: 100vh; background-color: #333; color: #f0f0f0; text-align: center; margin: 0; padding: 0; }.container { background-color: #444; padding: 40px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); } h1 { margin-top: 0; color: #76c7c0; } p { font-size: 1.2em; } #current-time { font-size: 1.1em; color: #ccc; } #countdown { font-size: 1.8em; font-weight: bold; color: #f9a825; margin-top: 15px; } </style></head><body><div class="container"><h1>실시간 주도 테마 현황</h1><p>현재 시장 운영 시간이 아닙니다.</p><p id="current-time">현재 시간: 2025-10-30 08:57:26</p><hr style="border-color: #555;"><p>다음 개장 시간:<br><strong>2025-10-30 09:00:00</strong></p><div id="countdown"></div></div><script>const nextOpenTime = new Date("2025-10-30T09:00:00"); function updateTimers() { const now = new Date(); const y = now.getFullYear(); const m = String(now.getMonth() + 1).padStart(2, '0'); const d = String(now.getDate()).padStart(2, '0'); const h = String(now.getHours()).padStart(2, '0'); const min = String(now.getMinutes()).padStart(2, '0'); const s = String(now.getSeconds()).padStart(2, '0'); document.getElementById('current-time').innerText = `현재 시간: ${y}-${m}-${d} ${h}:${min}:${s}`; const diff = nextOpenTime.getTime() - now.getTime(); if (diff <= 0) { document.getElementById('countdown').innerHTML = "곧 장이 시작됩니다! (페이지 새로고침)"; setTimeout(() => window.location.reload(), 1000); return; } const days = Math.floor(diff / (1000 * 60 * 60 * 24)); const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)); const seconds = Math.floor((diff % (1000 * 60)) / 1000); let countdownText = "개장까지 "; if (days > 0) countdownText += `${days}일 `; countdownText += `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`; document.getElementById('countdown').innerHTML = countdownText; } setInterval(updateTimers, 1000); updateTimers(); </script></body></html>
+<html><head><meta charset="utf-8" /><meta http-equiv="refresh" content="100"><title>실시간 주도 테마 현황 (2025-10-30 09:00)</title>
+<style>
+    /* ⭐ CSS 수정: 리사이징 복원 */
+    html, body {
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif, Arial, Helvetica;
+        background-color: #f8f9fa;
+        overflow: hidden;
+    }
+    body {
+        display: flex;
+        flex-direction: column;
+    }
+    .header {
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 15px;
+        color: #333;
+        flex-shrink: 0;
+    }
+    .container {
+        display: flex;
+        flex-grow: 1;
+        padding: 0 15px 15px 15px;
+        box-sizing: border-box;
+        overflow: hidden;
+        min-height: 0;
+    }
+    .left-column {
+        width: 25%;
+        min-width: 250px;
+        padding-right: 15px;
+        box-sizing: border-box;
+        overflow-y: auto;
+        height: 100%;
+    }
+    .right-column {
+        width: 75%;
+        flex-grow: 1;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        overflow: hidden;
+    }
+    .right-content {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        box-sizing: border-box;
+        overflow-y: auto; /* ⭐ 오른쪽 스크롤 */
+    }
+    /* ⭐ Plotly 차트 div 높이 조정 (flex-grow로 채우기) */
+    .right-content .plotly-graph-div {
+        flex-grow: 1; /* ⭐ 차트가 남은 공간 차지 */
+        min-height: 500px; /* Treemap 최소 높이 */
+        width: 100%;
+    }
+     /* ⭐ Plotly 차트 내부 요소 높이 100% */
+    .right-content .plotly-graph-div .js-plotly-plot,
+    .right-content .plotly-graph-div .main-svg {
+        height: 100% !important;
+        width: 100% !important;
+    }
+    .large-cap-box {
+        border: 1px solid #dee2e6;
+        margin-bottom: 15px;
+        padding: 12px;
+        border-radius: 8px;
+        background-color: #e9f5e9;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .large-cap-box h3 { margin-top: 0; margin-bottom: 8px; color: #1a5e20; font-size: 1.05em; font-weight: 600; }
+    .large-cap-box ol { margin: 0; padding-left: 18px; font-size: 13px; color: #212529; list-style-position: inside; }
+    .large-cap-box li { margin-bottom: 4px; line-height: 1.4; }
+    /* 요약 텍스트 스타일 */
+    .summary {
+        text-align: center;
+        margin: 10px 0 0 0;
+        font-size: 1.1em;
+        color: #495057;
+        background-color: #e9ecef;
+        padding: 10px;
+        border-radius: 5px;
+        flex-shrink: 0;
+        box-sizing: border-box;
+        height: auto;
+    }
+</style></head>
+<body>
+    <h2 class="header">2025-10-30 09:00 기준 장중 주도 테마 현황</h2>
+    <div class="container">
+        <div class="left-column"><div class="large-cap-box"><h3>삼전+닉스<br>[4,117 / +0억]</h3><ol><li>삼성전자 (2,445)</li><li>SK하이닉스 (1,671)</li></ol></div><div class="large-cap-box"><h3>KOSPI TOP 5<br>[3,590 / +0억]</h3><ol><li>두산에너빌리티 (425)</li><li>기아 (378)</li><li>삼성중공업 (319)</li><li>HD현대중공업 (192)</li><li>카카오 (182)</li></ol></div><div class="large-cap-box"><h3>KOSDAQ TOP 5<br>[339 / +0억]</h3><ol><li>100억 이상 종목 없음</li></ol></div></div>
+        <div class="right-column">
+            <div class="right-content">
+                <div class="plotly-graph-div"><div>                        <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-3.1.1.min.js" integrity="sha256-HUEFyfiTnZJxCxur99FjbKYTvKSzwDaD3/x5TqHpFu4=" crossorigin="anonymous"></script>                <div id="e2663847-807e-42cd-ab66-013f85e0afc3" class="plotly-graph-div" style="height:100%; width:100%;"></div>            <script type="text/javascript">                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("e2663847-807e-42cd-ab66-013f85e0afc3")) {                    Plotly.newPlot(                        "e2663847-807e-42cd-ab66-013f85e0afc3",                        [{"customdata":[["1. \ud55c\ud654\uc624\uc158 (366)\u003cbr\u003e2. \uc0bc\uc131\uc911\uacf5\uc5c5 (347)\u003cbr\u003e3. HJ\uc911\uacf5\uc5c5 (324)\u003cbr\u003e4. \ud55c\ud654\uc5d4\uc9c4 (192)\u003cbr\u003e5. HD\ud55c\uad6d\uc870\uc120\ud574\uc591 (144)","\u003cspan style='color:#E0E0E0; font-size: 16px;'\u003e1. \ud55c\ud654\uc624\uc158 (366)\u003c\u002fspan\u003e\u003cbr\u003e\u003cspan style='color:#E0E0E0; font-size: 16px;'\u003e2. \uc0bc\uc131\uc911\uacf5\uc5c5 (347)\u003c\u002fspan\u003e\u003cbr\u003e\u003cspan style='color:#E0E0E0; font-size: 16px;'\u003e3. HJ\uc911\uacf5\uc5c5 (324)\u003c\u002fspan\u003e\u003cbr\u003e\u003cspan style='color:#E0E0E0; font-size: 16px;'\u003e4. \ud55c\ud654\uc5d4\uc9c4 (192)\u003c\u002fspan\u003e\u003cbr\u003e\u003cspan style='color:#E0E0E0; font-size: 16px;'\u003e5. HD\ud55c\uad6d\uc870\uc120\ud574\uc591 (144)\u003c\u002fspan\u003e",0],["1. \ud604\ub300\ucc28 (491)\u003cbr\u003e2. \uae30\uc544 (397)","\u003cspan style='color:#E0E0E0; font-size: 16px;'\u003e1. \ud604\ub300\ucc28 (491)\u003c\u002fspan\u003e\u003cbr\u003e\u003cspan style='color:#E0E0E0; font-size: 16px;'\u003e2. \uae30\uc544 (397)\u003c\u002fspan\u003e",0],["1. \ub450\uc0b0\uc5d0\ub108\ube4c\ub9ac\ud2f0 (444)","\u003cspan style='color:#E0E0E0; font-size: 16px;'\u003e1. \ub450\uc0b0\uc5d0\ub108\ube4c\ub9ac\ud2f0 (444)\u003c\u002fspan\u003e",0],["1. \uce74\uce74\uc624 (188)\u003cbr\u003e2. NAVER (182)","\u003cspan style='color:#2B2B2B; font-size: 16px;'\u003e1. \uce74\uce74\uc624 (188)\u003c\u002fspan\u003e\u003cbr\u003e\u003cspan style='color:#2B2B2B; font-size: 16px;'\u003e2. NAVER (182)\u003c\u002fspan\u003e",0],["1. \uc0bc\uc131SDI (150)\u003cbr\u003e2. \uc0bc\uc601\uc5e0\ud14d (142)","\u003cspan style='color:#2B2B2B; font-size: 16px;'\u003e1. \uc0bc\uc131SDI (150)\u003c\u002fspan\u003e\u003cbr\u003e\u003cspan style='color:#2B2B2B; font-size: 16px;'\u003e2. \uc0bc\uc601\uc5e0\ud14d (142)\u003c\u002fspan\u003e",0],["1. \ud55c\ubbf8\ubc18\ub3c4\uccb4 (104)","\u003cspan style='color:#2B2B2B; font-size: 16px;'\u003e1. \ud55c\ubbf8\ubc18\ub3c4\uccb4 (104)\u003c\u002fspan\u003e",0],["","",0],["","",0],["","",0],["","",0]],"hovertemplate":"\u003cb\u003e%{label}\u003c\u002fb\u003e\u003cbr\u003e\uce74\ud14c\uace0\ub9ac \uc804\uccb4 \ud569\uacc4: %{value:,.0f} (\uc5b5 \uc6d0)\u003cbr\u003eTop 10 \uae30\uad00+\uc678\uad6d\uc778 \uc218\uae09: %{customdata[2]:+,.0f} (\uc5b5 \uc6d0)\u003cbr\u003e\u003cbr\u003e\u003cb\u003eTop 10 \uc885\ubaa9 (\uac70\ub798\ub300\uae08, 100\uc5b5 \uc774\uc0c1):\u003c\u002fb\u003e\u003cbr\u003e%{customdata[0]}\u003cextra\u003e\u003c\u002fextra\u003e","labels":["\uc870\uc120\uc8fc","\uc790\ub3d9\ucc28\uc81c\uc870\uc0ac","\uc6d0\uc804","IT\uc18c\ud504\ud2b8\uc6e8\uc5b4","\uc2e0\uc7ac\uc0dd","\ubc18\ub3c4\uccb4","\uae08\uc735","\ud578\ub4dc\ud3f0 \uad00\ub828\uc8fc","\uc790\uc6d0\uac1c\ubc1c","\ub85c\ubd07"],"marker":{"colors":{"dtype":"i2","bdata":"PAYcBCcCyAFDAc8ArQCXAHIAcQA="},"colorscale":[[0.0,"rgb(247,252,245)"],[0.125,"rgb(229,245,224)"],[0.25,"rgb(199,233,192)"],[0.375,"rgb(161,217,155)"],[0.5,"rgb(116,196,118)"],[0.625,"rgb(65,171,93)"],[0.75,"rgb(35,139,69)"],[0.875,"rgb(0,109,44)"],[1.0,"rgb(0,68,27)"]]},"parents":["","","","","","","","","",""],"textfont":{"size":20},"textinfo":"label+value","texttemplate":"%{label}\u003cbr\u003e[%{value:,.0f} \u002f %{customdata[2]:+,.0f}\uc5b5]\u003cbr\u003e%{customdata[1]}","values":{"dtype":"i2","bdata":"PAYcBCcCyAFDAc8ArQCXAHIAcQA="},"type":"treemap"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"title":{"text":"\uc8fc\ub3c4 \ud14c\ub9c8 Top 10 (\ub300\ud615\uc8fc \uc81c\uc678, \uc5b5 \uc6d0)\u003cbr\u003e(*\uce74\ud14c\uace0\ub9ac\uba85 [\uc804\uccb4 \ud569\uacc4 \u002f \uae30\uad00+\uc678\uad6d\uc778 \uc218\uae09] \u002f *\ubc15\uc2a4 \ub0b4 \ubaa9\ub85d: Top 10 \uc885\ubaa9, 100\uc5b5 \uc774\uc0c1)"},"margin":{"t":70,"l":10,"r":10,"b":10},"paper_bgcolor":"#f8f9fa","plot_bgcolor":"#f8f9fa"},                        {"displayModeBar": false, "responsive": true}                    )                };            </script>        </div></div>
+                <div class="summary">💡 현재 주도 테마: <strong>조선주</strong> / 주도주: <strong>한화오션</strong></div>
+            </div>
+        </div>
+    </div>
+</body></html>
